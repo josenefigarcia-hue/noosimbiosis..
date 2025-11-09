@@ -1,0 +1,11 @@
+Notas rápidas de integración y calibración:
+
+Reemplaza MEAStimulatorStub y MEAAcquisitionStub por tus objetos/driver reales (Axion, Multi Channel Systems, etc.). Asegura que el método kill_switch_hardware_trigger() active un relé físico que corte la salida del estimulador.
+
+Ajusta umbrales heurísticos (power_h threshold, BURST_RATE_THRESHOLD, DC shift) con datos reales durante la calibración baseline.
+
+Mide latencia real entre detección y corte en hardware y valida que esté por debajo de tu objetivo (ideal <100 ms; el script busca <40 ms en simulación).
+
+Conserva telemetría, hashes y firma externa para auditoría. Considera añadir firma criptográfica con clave privada del laboratorio.
+
+Antes de usar con cultivos humanos o in-vivo, realiza validación extensa in-vitro y revisión por comité.

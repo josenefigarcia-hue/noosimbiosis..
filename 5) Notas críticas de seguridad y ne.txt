@@ -1,0 +1,11 @@
+5) Notas críticas de seguridad y next-steps
+
+NO usar key_vault_stub en producción. Reemplazar por HSM real (AWS KMS asymmetric signing, HashiCorp Vault Transit/Key, YubiHSM, Luna HSM).
+
+Clave en HSM: la firma debe hacerse vía API del HSM; el binario nunca debe portar la clave privada.
+
+Rotación y revocación: introducir pubkey_id en metadatos y registro de rotaciones en CSM.
+
+Latencia: pruebas unitarias no simulan latencia HSM real. Testear llamada de firma contra HSM real y medir SLA.
+
+Vault audit log: activar logging inmutable del HSM/Vault y replicar entradas a auditor externo.
